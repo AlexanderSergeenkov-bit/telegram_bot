@@ -88,8 +88,7 @@ def send_phrase(message: Message):
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
     chat_id = message.chat.id
-    bot.reply_to(message, random.choice(number_list))
-    bot.send_message(chat_id, photo1)
+    bot.send_message(chat_id, photo=open('tmp/1.png', 'rb'))
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
 def reoly_to_doc(message: Message):
