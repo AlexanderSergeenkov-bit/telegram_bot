@@ -73,8 +73,6 @@ bad_phrases_reply = [
     'Ну и чё',
 ]
 
-photo1 = open('/tmp/1.jpg', 'rb')
-
 @bot.message_handler(commands=['start', 'help'])
 def markup_bot(message: Message):
     bot.send_message(message.chat.id, 'Добро пожаловать', reply_markup=keyboard())
