@@ -87,8 +87,7 @@ def send_phrase(message: Message):
 
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
-    chat_id = message.chat.id
-    bot.send_message(chat_id, photo=open('tmp/1.png', 'rb'))
+    bot.reply_to(message, photo=open('https://www.meme-arsenal.com/memes/b772f8b5f0d71a2307a277da69aef179.jpg', 'rb'))
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
 def reoly_to_doc(message: Message):
