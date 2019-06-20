@@ -88,6 +88,10 @@ def send_phrase(message: Message):
 def number_fun(message: Message):
     bot.reply_to(message, random.choice(number_list))
 
+@bot.message_handler(content_types=['document'])
+def reoly_to_doc(message: Message):
+    bot.reply_to(message, "Извини, но я всего лишь маленький бот, мне такое сложно. Лучше отправь мне текст или напиши моему автору, чтобы узнать боьше обо мне")
+
 
 @bot.message_handler(func=lambda message: True)
 def upper(message: Message):
