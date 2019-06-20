@@ -73,6 +73,7 @@ bad_phrases_reply = [
     'Ну и чё',
 ]
 
+photo1 = open('/tmp/1.jpg', 'rb')
 
 @bot.message_handler(commands=['start', 'help'])
 def markup_bot(message: Message):
@@ -86,12 +87,13 @@ def send_phrase(message: Message):
 
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
+    chat_id = message.chat.id
     bot.reply_to(message, random.choice(number_list))
+    bot.send_message(chat_id, photo1)
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
 def reoly_to_doc(message: Message):
-    bot.reply_to(message, "Извини, но я всего лишь маленький бот, мне такое сложно. Лучше отправь мне текст или напиши моему автору, чтобы узнать боьше обо мне")
-
+    pass
 
 @bot.message_handler(func=lambda message: True)
 def upper(message: Message):
