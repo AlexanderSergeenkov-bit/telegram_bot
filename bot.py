@@ -89,7 +89,7 @@ def number_fun(message: Message):
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
 def reply_to_doc(message: Message):
-    bot.reply_to(message, "kek")
+    bot.reply_to(message, "Ну блин, давай текст, я такое не умею")
 
 @bot.message_handler(func=lambda message: True)
 def upper(message: Message):
