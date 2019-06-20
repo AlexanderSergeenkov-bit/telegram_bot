@@ -85,11 +85,11 @@ def send_phrase(message: Message):
 
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
-    bot.reply_to(message, photo=open('https://www.meme-arsenal.com/memes/b772f8b5f0d71a2307a277da69aef179.jpg', 'rb'))
+    bot.reply_to(message, random.choice(number_list))
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
-def reoly_to_doc(message: Message):
-    pass
+def reply_to_doc(message: Message):
+    bot.reply_to(message, "kek")
 
 @bot.message_handler(func=lambda message: True)
 def upper(message: Message):
