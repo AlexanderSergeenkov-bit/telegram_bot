@@ -117,7 +117,7 @@ def upper(message: Message):
 
     for b in error_phrases:
         if (b in message.text and (keyword in message.text or keyword2 in message.text)):
-            bot.reply_to(message, "Лёня, иди нахуй")
+            bot.reply_to(message, "Лёня, Саша работает, иди нахуй")
 
     # elif error_phrases[0] in message.text:
     #     bot.reply_to(message, "Пошел нахуй")
