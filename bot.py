@@ -64,6 +64,8 @@ error_phrases = [
 keyword = "бот"
 keyword2 = "Бот"
 
+phrase_love_key = 'Любовь'
+
 bad_phrases_reply = [
     'А повежлевее нельзя!?',
     'Ты чё бык?',
@@ -87,6 +89,14 @@ def markup_bot(message: Message):
 @bot.message_handler(commands=['phrase'])
 def send_phrase(message: Message):
     bot.send_message(message.chat.id, 'Выберите категорию', reply_markup=phrase_keyboard())
+
+
+@bot.message_handler(content_types=["text"])
+def send_anytext(message):
+    if phrase_love_key in message.text:
+        bot.reply_to(message, random.choice(phrases_love))
+
+
 
 
 @bot.message_handler(commands=['number'])
@@ -147,11 +157,6 @@ def upper(message: Message):
         if (i in message.text):
             bot.reply_to(message, random.choice(bad_phrases_reply))
 
-
-@bot.message_handler(content_types=["text"])
-def send_anytext(message):
-    if message.text == 'Любовь':
-        bot.reply_to(message, random.choice(phrases_love))
 
 
 def keyboard():
