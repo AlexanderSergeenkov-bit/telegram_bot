@@ -6,9 +6,6 @@ from telebot.types import Message
 TOKEN = '749206105:AAFOfzQhTDQxU8XPQehkXmilGVGIGIVIp24'
 bot = telebot.TeleBot(TOKEN)
 
-def get_updates_json(request):
-    response = request.get()
-
 
 with open('phrases.txt', 'r') as f:
     phrases = f.readlines()
@@ -94,7 +91,7 @@ def send_phrase(message: Message):
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
     if phrase_love_key in message.text:
-        bot.reply_to(message, "kek")
+        bot.reply_to(message, random.choice(phrases))
 
 
 
