@@ -148,13 +148,11 @@ def upper(message: Message):
             bot.reply_to(message, random.choice(bad_phrases_reply))
 
 
-@bot.message_handler(content_types=['text'])
+@bot.message_handler(content_types=["text"])
 def send_anytext(message):
     chat_id = message.chat.id
-    if message.text == 'phrase':
-        bot.send_message(chat_id, random.choice(phrases), reply_markup=keyboard())
-    elif message.text == 'Любовь':
-        bot.send_message(chat_id, random.choice(phrases_love))
+    if message.text == 'Любовь':
+        bot.send_message(chat_id, random.choice(phrases_love), reply_markup=phrase_keyboard())
 
 
 def keyboard():
