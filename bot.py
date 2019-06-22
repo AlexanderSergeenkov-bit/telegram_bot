@@ -58,7 +58,6 @@ error_phrases = [
     'как дела',
 ]
 
-
 keyword = "бот"
 keyword2 = "Бот"
 
@@ -86,6 +85,11 @@ def markup_bot(message: Message):
     bot.send_message(message.chat.id, 'Добро пожаловать', reply_markup=keyboard())
 
 
+@bot.message_handler(commands=['number'])
+def number(message: Message):
+    bot.reply_to(message, str(random.randint(0, 100)))
+
+
 @bot.message_handler(commands=['phrase'])
 def send_phrase(message: Message):
     bot.send_message(message.chat.id, 'Выберите категорию', reply_markup=phrase_keyboard())
@@ -101,8 +105,6 @@ def send_anytext(message):
 
     elif phrases_life_key in message.text:
         bot.reply_to(message, random.choice(phrases_life))
-
-
 
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
