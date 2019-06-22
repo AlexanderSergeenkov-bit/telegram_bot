@@ -13,7 +13,7 @@ def get_updates_json(request):
 with open('phrases.txt', 'r') as f:
     phrases = f.readlines()
 
-with open('/sql/phrases/love.txt', 'r') as f:
+with open('sql/phrases/love.txt', 'r') as f:
     phrases_love = f.readlines()
 
 phrase = ['Подтверди', 'подтверди', 'повдверди', 'да?', 'согласен?']
