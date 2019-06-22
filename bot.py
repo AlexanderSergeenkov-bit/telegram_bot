@@ -154,7 +154,7 @@ def send_anytext(message):
     if message.text == 'phrase':
         bot.send_message(chat_id, random.choice(phrases), reply_markup=keyboard())
     elif message.text == 'Любовь':
-        bot.send_message(chat_id, random.choice(phrases_love), reply_markup=phrase_keyboard())
+        bot.send_message(chat_id, random.choice(phrases_love))
 
 
 def keyboard():
