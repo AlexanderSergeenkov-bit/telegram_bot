@@ -6,9 +6,6 @@ from telebot.types import Message
 TOKEN = '749206105:AAFOfzQhTDQxU8XPQehkXmilGVGIGIVIp24'
 bot = telebot.TeleBot(TOKEN)
 
-logger = telebot.logger
-telebot.logger.setLevel(logging.DEBUG)
-
 
 with open('phrases.txt', 'r') as f:
     phrases = f.readlines()
