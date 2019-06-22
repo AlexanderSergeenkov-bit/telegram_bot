@@ -108,6 +108,7 @@ def send_anytext(message):
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
     bot.reply_to(message, random.randint(0, 100))
+    return random.randint(0, 100)
 
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
@@ -177,9 +178,8 @@ def phrase_keyboard():
     markkup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     btn1 = types.KeyboardButton('Любовь')
     btn2 = types.KeyboardButton('Жизнь')
-    btn3 = types.KeyboardButton('Деньги')
-    btn4 = types.KeyboardButton('Дружба')
-    markkup.add(btn1, btn2, btn3, btn4)
+    btn3 = types.KeyboardButton('Дружба')
+    markkup.add(btn1, btn2, btn3)
     return markkup
 
 
