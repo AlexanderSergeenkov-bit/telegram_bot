@@ -65,7 +65,7 @@ keyword2 = "Бот"
 
 phrase_love_key = 'Любовь'
 phrases_friendship_key = 'Дружба'
-phrases_life_key = 'Дружба'
+phrases_life_key = 'Жизнь'
 
 
 bad_phrases_reply = [
@@ -107,7 +107,7 @@ def send_anytext(message):
 
 @bot.message_handler(commands=['number'])
 def number_fun(message: Message):
-    bot.reply_to(message, random.randint(0, 999))
+    bot.reply_to(message, random.randint(0, 100))
 
 
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
