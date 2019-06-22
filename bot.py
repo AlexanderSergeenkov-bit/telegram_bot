@@ -13,6 +13,9 @@ with open('phrases.txt', 'r') as f:
 with open('sql/phrases/love.txt', 'r') as f:
     phrases_love = f.readlines()
 
+with open('sql/phrases/friendship.txt', 'r') as f:
+    phrases_friendship = f.readlines()
+
 phrase = ['Подтверди', 'подтверди', 'повдверди', 'да?', 'согласен?']
 prase_reply = [
     'угу',
@@ -62,6 +65,8 @@ keyword = "бот"
 keyword2 = "Бот"
 
 phrase_love_key = 'Любовь'
+phrases_friendship_key = 'Дружба'
+
 
 bad_phrases_reply = [
     'А повежлевее нельзя!?',
@@ -92,6 +97,9 @@ def send_phrase(message: Message):
 def send_anytext(message):
     if phrase_love_key in message.text:
         bot.reply_to(message, random.choice(phrases_love))
+
+    elif phrases_friendship_key in message.text:
+        bot.reply_to(message, random.choice(phrases_friendship))
 
 
 
