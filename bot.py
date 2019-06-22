@@ -94,7 +94,7 @@ def send_phrase(message: Message):
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
     if phrase_love_key in message.text:
-        bot.reply_to(message, random.choice(phrases_love))
+        bot.reply_to(message, "kek")
 
 
 
