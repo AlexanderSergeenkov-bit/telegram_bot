@@ -87,7 +87,7 @@ def markup_bot(message: Message):
 
 @bot.message_handler(commands=['number'])
 def number(message: Message):
-    bot.reply_to(message, "kek")
+    bot.reply_to(message, str(random.randint(0, 100)))
 
 
 @bot.message_handler(commands=['phrase'])
