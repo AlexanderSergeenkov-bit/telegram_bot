@@ -6,11 +6,14 @@ from telebot.types import Message
 TOKEN = '749206105:AAFOfzQhTDQxU8XPQehkXmilGVGIGIVIp24'
 bot = telebot.TeleBot(TOKEN)
 
+logger = telebot.logger
+telebot.logger.setLevel(logging.DEBUG)
+
 
 with open('phrases.txt', 'r') as f:
     phrases = f.readlines()
 
-phrase = ['Подтверди', 'подтверди', 'повдверди', 'да?']
+phrase = ['Подтверди', 'подтверди', 'повдверди', 'да?', 'согласен?']
 prase_reply = [
     'угу',
     'ага',
@@ -81,6 +84,7 @@ def markup_bot(message: Message):
 @bot.message_handler(commands=['phrase'])
 def send_phrase(message: Message):
     bot.reply_to(message, random.choice(phrases))
+    bot.send_message(message.chat.id, 'Выберите категорию', reply_markup=phrase_keyboard())
 
 
 @bot.message_handler(commands=['number'])
@@ -154,6 +158,14 @@ def keyboard():
     markup.add(btn1, btn2)
     return markup
 
+def phrase_keyboard():
+    markkup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+    btn1 = types.KeyboardButton('Любовь')
+    btn2 = types.KeyboardButton('Жизнь')
+    btn3 = types.KeyboardButton('Деньги')
+    btn4 = types.KeyboardButton('Дружба')
+    markkup.add(btn1, btn2, btn3, btn4)
+    return markkup
 
 
 bot.polling()
