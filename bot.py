@@ -6,9 +6,15 @@ from telebot.types import Message
 TOKEN = '749206105:AAFOfzQhTDQxU8XPQehkXmilGVGIGIVIp24'
 bot = telebot.TeleBot(TOKEN)
 
+def get_updates_json(request):
+    response = request.get()
+
 
 with open('phrases.txt', 'r') as f:
     phrases = f.readlines()
+
+with open('/sql/phrases/love.txt', 'r') as f:
+    phrases_love = f.readlines()
 
 phrase = ['Подтверди', 'подтверди', 'повдверди', 'да?', 'согласен?']
 prase_reply = [
@@ -22,7 +28,6 @@ number_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
                29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
                55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
                81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
-
 
 phrase_number = [
     'зарандомь число',
@@ -73,6 +78,7 @@ bad_phrases_reply = [
     'Ну и чё',
 ]
 
+
 @bot.message_handler(commands=['start', 'help'])
 def markup_bot(message: Message):
     bot.send_message(message.chat.id, 'Добро пожаловать', reply_markup=keyboard())
@@ -80,7 +86,6 @@ def markup_bot(message: Message):
 
 @bot.message_handler(commands=['phrase'])
 def send_phrase(message: Message):
-    bot.reply_to(message, random.choice(phrases))
     bot.send_message(message.chat.id, 'Выберите категорию', reply_markup=phrase_keyboard())
 
 
@@ -88,9 +93,11 @@ def send_phrase(message: Message):
 def number_fun(message: Message):
     bot.reply_to(message, random.choice(number_list))
 
+
 @bot.message_handler(content_types=['document', 'audio', 'photo', 'sticker', 'video'])
 def reply_to_doc(message: Message):
     bot.reply_to(message, "Ну блин, давай текст, я такое не умею")
+
 
 @bot.message_handler(func=lambda message: True)
 def upper(message: Message):
@@ -146,6 +153,8 @@ def send_anytext(message):
     chat_id = message.chat.id
     if message.text == 'phrase':
         bot.send_message(chat_id, random.choice(phrases), reply_markup=keyboard())
+    elif message.text == 'Любовь':
+        bot.send_message(chat_id, random.choice(phrases_love), reply_markup=phrase_keyboard())
 
 
 def keyboard():
@@ -154,6 +163,7 @@ def keyboard():
     btn2 = types.KeyboardButton('/number')
     markup.add(btn1, btn2)
     return markup
+
 
 def phrase_keyboard():
     markkup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
